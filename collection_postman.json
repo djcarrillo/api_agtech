@@ -1,0 +1,452 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "agtech-api",
+    "description": "Middleware API for connect BD and polygon-io",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/agtech/test": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "endpoint for test server",
+        "operationId": "test_agtech_test_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/available_symbols": {
+      "get": {
+        "summary": "endpoint for get available symbols",
+        "operationId": "symbols_agtech_available_symbols_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/price_symbol": {
+      "get": {
+        "summary": "endpoint for get price symbol",
+        "operationId": "price_symbol_agtech_price_symbol_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Symbols",
+              "type": "string"
+            },
+            "name": "symbols",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Date",
+              "type": "string"
+            },
+            "name": "date",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Adjusted",
+              "type": "string"
+            },
+            "name": "adjusted",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/created_user": {
+      "post": {
+        "summary": "endpoint for created new users",
+        "operationId": "created_user_agtech_created_user_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_created_user_agtech_created_user_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/send_favorite_companies": {
+      "post": {
+        "summary": "endpoint for push favorite companies",
+        "operationId": "send_companies_tracker_agtech_send_favorite_companies_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Favorite Companies",
+                "type": "array",
+                "items": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/pull_price_companies": {
+      "get": {
+        "summary": "endpoint for pull price favorite companies, this endpoint no adjust the price",
+        "operationId": "pull_price_favorite_agtech_pull_price_companies_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Date",
+              "type": "string"
+            },
+            "name": "date",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agtech/extract_all": {
+      "get": {
+        "summary": "endpoint for pull price favorite companies, this endpoint no adjust the price",
+        "operationId": "pull_price_all_agtech_extract_all_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Date",
+              "type": "string"
+            },
+            "name": "date",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "X-Auth-Login-Token",
+              "type": "string"
+            },
+            "name": "x-auth-login-token",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_created_user_agtech_created_user_post": {
+        "title": "Body_created_user_agtech_created_user_post",
+        "required": [
+          "favorite_companies",
+          "discarded_companies"
+        ],
+        "type": "object",
+        "properties": {
+          "favorite_companies": {
+            "title": "Favorite Companies",
+            "type": "array",
+            "items": {}
+          },
+          "discarded_companies": {
+            "title": "Discarded Companies",
+            "type": "array",
+            "items": {}
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
